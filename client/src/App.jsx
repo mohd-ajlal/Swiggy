@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
 import ApiCalling from './components/ApiCalling'
 import Body from './components/Body'
@@ -10,8 +11,9 @@ function App() {
 
       <>
         <Header/>
-        <Body/>
+        {/* <Body/> */}
         {/* <ApiCalling/> */}
+        <Outlet/>
         <Footer/>
       </>
   )

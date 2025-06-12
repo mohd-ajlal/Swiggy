@@ -4,6 +4,7 @@ import { BiSolidOffer } from "react-icons/bi";
 import { MdHelpOutline } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -21,24 +22,27 @@ function Header() {
             </clipPath>
           </defs>
         </svg>
-        <span className="text-xl font-semibold">Swiggy</span>
+        <Link className="text-xl font-semibold"
+          to="/"
+        >Swiggy</Link>
       </div>
       <nav>
         <ul className="flex space-x-6">
           {[
-            { icon: <IoSearch size={20} />, label: "Search" },
-            { icon: <BiSolidOffer size={20} />, label: "Offer" },
-            { icon: <MdHelpOutline size={20} />, label: "Help" },
-            { icon: <CgProfile size={20} />, label: "Sign In" },
-            { icon: <FaShoppingCart size={20} />, label: "Cart" },
+            { icon: <IoSearch size={20} />, label: "Search", to: "/" },
+            { icon: <BiSolidOffer size={20} />, label: "Offer", to: "/offer" },
+            { icon: <MdHelpOutline size={20} />, label: "Help", to: "/help" },
+            { icon: <CgProfile size={20} />, label: "Sign In", to: "/signin" },
+            { icon: <FaShoppingCart size={20} />, label: "Cart", to: "/cart" },
           ].map((item, index) => (
-            <li
+            <Link
               key={index}
               className="flex items-center gap-2 hover:text-orange-500 transition-colors duration-200 cursor-pointer"
+              to={item.to}
             >
               {item.icon}
               <span>{item.label}</span>
-            </li>
+            </Link>
           ))}
         </ul>
       </nav>

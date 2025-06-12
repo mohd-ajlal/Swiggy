@@ -6,13 +6,25 @@ function Body() {
   const restArr = ApiCalling();
   const [allRestArr, setallRestArr] = useState(restArr);
   const [activeButton, setActiveButton] = useState("all");
+  const [filter, setFilter] = useState("");
   console.log(allRestArr, "allRestArr");
+
+  const handleFilter = (e) =>{
+    const value = e.target.value.toLowerCase();
+    setFilter(value);
+    const filteredRestaurants = restArr.filter((restaurant) =>
+      restaurant.info.name.toLowerCase().includes(value)
+    );
+    setallRestArr(filteredRestaurants);
+  }
 
   useEffect(function(){
     if(restArr && restArr.length > 0){
       setallRestArr(restArr);
     }
   },[restArr])
+
+
 
   return (
     <div className="ml-20 mt-4">
@@ -30,7 +42,10 @@ function Body() {
           setActiveButton("all");
         }}
       >Reset</button>
-       <input  className="border rounded-2xl p-2 mx-4" type="text" placeholder="Search Restaurants" />
+       <input  className="border rounded-2xl p-2 mx-4" type="text" placeholder="Search Restaurants" 
+        value={filter} 
+        onChange={handleFilter}
+       />
       <div className="mx-18">
         <RestaurantCard restArr={allRestArr}
 
