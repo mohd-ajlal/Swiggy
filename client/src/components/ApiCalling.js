@@ -6,7 +6,7 @@ function ApiCalling(){
     
     useEffect(function(){
         async function calling() {
-            const api = "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=27.18230&lng=78.02520&carousel=true&third_party_vendor=1"
+            const api = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.8999565&lng=78.0838533&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
             const resp = await axios.get(api)
             // console.log(resp.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants, "response from api");
             setAllRestaurantArr(resp.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
