@@ -8,6 +8,7 @@ import Body from './components/Body.jsx'
 import Offer from './Offer.jsx'
 import Error from './components/Error.jsx'
 import RestaurantDetail from './components/RestaurantDetail.jsx'
+import Clock from './components/Clock.jsx'
 
 const appRoutes =createBrowserRouter([{
   path: '/',
@@ -31,6 +32,10 @@ const appRoutes =createBrowserRouter([{
 },{
   path:"restaurants/:id",
   element:<RestaurantDetail/>
+},
+{
+  path:"clock",
+  element:<Clock/>
 }
   ]
 },
