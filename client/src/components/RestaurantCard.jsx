@@ -1,13 +1,16 @@
+import { Link } from "react-router-dom";
+
 function RestaurantCard({ restArr }) {
   console.log(restArr, "restArr");
 
   return (
     <div className="flex flex-wrap gap-6 justify-center w-11/12 mx-auto py-6">
       {restArr.map((restDetails) => (
+        <Link to={`/restaurants/${restDetails.info.id}`}>
         <div
           key={restDetails.info.id}
           className="bg-white shadow-lg rounded-2xl w-80 p-4 transition-transform hover:scale-105"
-        >
+          >
           <img
             className="w-full h-48 object-cover rounded-xl"
             src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/${restDetails.info.cloudinaryImageId}`}
@@ -21,6 +24,7 @@ function RestaurantCard({ restArr }) {
           <p className="text-sm text-gray-500 mt-2">{restDetails.info.cuisines.join(", ")}</p>
           <p className="text-sm text-gray-400">{restDetails.info.locality}</p>
         </div>
+        </Link>
       ))}
     </div>
   );

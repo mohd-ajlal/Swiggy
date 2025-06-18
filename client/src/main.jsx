@@ -7,6 +7,7 @@ import SignIn from './components/SignIn.jsx'
 import Body from './components/Body.jsx'
 import Offer from './Offer.jsx'
 import Error from './components/Error.jsx'
+import RestaurantDetail from './components/RestaurantDetail.jsx'
 
 const appRoutes =createBrowserRouter([{
   path: '/',
@@ -27,6 +28,9 @@ const appRoutes =createBrowserRouter([{
 },{
   path:"signin",
   element:<SignIn/>
+},{
+  path:"restaurants/:id",
+  element:<RestaurantDetail/>
 }
   ]
 },
