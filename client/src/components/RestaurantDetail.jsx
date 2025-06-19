@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 function RestaurantDetails() {
   const { id } = useParams();
@@ -20,7 +22,13 @@ function RestaurantDetails() {
       }
     }
     fetchData();
-  }, [id]);
+  }, [id,API]);
+
+  const dispatch = useDispatch();
+
+  function handleAddItem(item) {
+    dispatch(addItem(item));
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-orange-50 via-white to-green-50 px-4 py-10">
@@ -50,7 +58,7 @@ function RestaurantDetails() {
                   Price: ₹{info.defaultPrice ? info.defaultPrice / 100 : info.price / 100 || "N/A"}
                 </p>
               </div>
-              <button className="mt-4 bg-green-500 text-white font-semibold py-2 rounded hover:bg-green-600 transition-all">
+              <button onClick={()=>handleAddItem(foodItem)} className="mt-4 bg-green-500 text-white font-semibold py-2 rounded hover:bg-green-600 transition-all">
                 Add +
               </button>
             </div>

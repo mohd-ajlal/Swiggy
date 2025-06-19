@@ -9,6 +9,7 @@ import Offer from './Offer.jsx'
 import Error from './components/Error.jsx'
 import RestaurantDetail from './components/RestaurantDetail.jsx'
 import Clock from './components/Clock.jsx'
+import Cart from './components/Cart.jsx'
 
 const appRoutes =createBrowserRouter([{
   path: '/',
@@ -36,6 +37,9 @@ const appRoutes =createBrowserRouter([{
 {
   path:"clock",
   element:<Clock/>
+},{
+  path:"/cart",
+  element:<Cart/>
 }
   ]
 },
