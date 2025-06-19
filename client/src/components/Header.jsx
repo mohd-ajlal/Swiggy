@@ -5,8 +5,12 @@ import { MdHelpOutline } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-function Header() {
+function Header() {4
+  
+  const cartItems = useSelector((store)=>store.cart.items)
+
   return (
     <header className="bg-gray-900 text-white px-6 py-4 shadow-md flex justify-between items-center">
 
@@ -41,10 +45,19 @@ function Header() {
               to={item.to}
             >
               {item.icon}
+              
               <span>{item.label}</span>
+              {item.label === "Cart" && cartItems.length >= 0 && (
+                <span className="bg-red-500 text-white rounded-full px-2 py-1 text-xs">
+                  {cartItems.length}
+                </span>
+              )}
+
             </Link>
           ))}
         </ul>
+
+
       </nav>
     </header>
   );
